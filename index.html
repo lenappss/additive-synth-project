@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Modular Additive Synthesizer</title>
+<title>Modular Additive Synthesizer | Project</title>
 
 <style>
 body {
@@ -11,26 +11,26 @@ body {
     font-family: Arial, sans-serif;
     background: #0f0f14;
     color: #eaeaf0;
+    line-height: 1.6;
 }
 
 header {
-    padding: 60px 20px;
+    padding: 70px 20px;
     text-align: center;
     background: linear-gradient(135deg, #1f1f2e, #2c2c44);
 }
 
 header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+    font-size: 2.8rem;
 }
 
 header p {
-    color: #aaa;
+    color: #bbb;
 }
 
 section {
     padding: 60px 20px;
-    max-width: 1000px;
+    max-width: 1100px;
     margin: auto;
 }
 
@@ -45,7 +45,6 @@ h2 {
     padding: 20px;
     margin: 15px 0;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.4);
 }
 
 .grid {
@@ -54,16 +53,18 @@ h2 {
     gap: 20px;
 }
 
+pre {
+    background: #111;
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
 footer {
     text-align: center;
     padding: 30px;
     background: #111;
     color: #777;
-}
-
-a {
-    color: #6c63ff;
-    text-decoration: none;
 }
 </style>
 </head>
@@ -72,164 +73,244 @@ a {
 
 <header>
     <h1>🎛️ Modular Additive Synthesizer</h1>
-    <p>A Max/MSP project exploring additive synthesis, modular design, and vector mixing</p>
+    <p>A Max/MSP project exploring sound synthesis, modular design, and real-time audio interaction</p>
 </header>
 
+<!-- OVERVIEW -->
 <section>
-    <h2>📌 Overview</h2>
-    <div class="card">
-        <p>
-            This project is a modular synthesizer built in Max/MSP using additive synthesis techniques.
-            It combines multiple synthesis modules that can be dynamically selected and blended
-            using a vector-based mixing system.
-        </p>
-    </div>
+<h2>📌 Overview</h2>
+<div class="card">
+<p>
+This project is a modular additive synthesizer built in Max/MSP. It combines multiple synthesis techniques into a flexible system where different sound engines can be selected, combined, and blended in real time using vector synthesis.
+</p>
+</div>
 </section>
 
+<!-- CONTEXT -->
 <section>
-    <h2>🧠 Concept</h2>
-    <div class="card">
-        <p>
-            The system is based on additive synthesis, where complex sounds are created
-            by combining sine wave partials. The project expands this concept into a modular,
-            interactive sound design environment.
-        </p>
-    </div>
+<h2>📚 Context & Background</h2>
+<div class="card">
+<p>
+This project is based on the book <strong>Electronic Music and Sound Design</strong> by Alessandro Cipriani and Maurizio Giri.  
+The book introduces digital sound synthesis using Max/MSP and provides both theoretical and practical approaches to sound design.
+</p>
+
+<p>
+Before starting this project, I had little experience with sound synthesis and Max/MSP.  
+All concepts implemented here were learned and applied progressively throughout the project.
+</p>
+</div>
 </section>
 
+<!-- THEORY -->
 <section>
-    <h2>🏗️ System Architecture</h2>
-    <div class="card">
-        <pre>
+<h2>🧠 Additive Synthesis (Theory)</h2>
+<div class="card">
+<p>
+Additive synthesis is a fundamental sound synthesis technique where complex sounds are created by summing simple sine waves (partials).
+</p>
+
+<ul>
+<li>Each partial has its own frequency and amplitude</li>
+<li>The combination defines the timbre</li>
+<li>It allows precise control over spectral content</li>
+</ul>
+
+<p>
+This method is powerful but computationally intensive, and it provides deep insight into how sound is constructed.
+</p>
+</div>
+</section>
+
+<!-- ARCHITECTURE -->
+<section>
+<h2>🏗️ System Architecture</h2>
+<div class="card">
+<pre>
 [4 Synth Modules] → [Selector + Vector Mixer] → [Reverb] → Output
-        </pre>
-    </div>
+</pre>
+
+<ul>
+<li>4 independent modules</li>
+<li>Selectable synthesis type per module</li>
+<li>Vector-based mixing system</li>
+<li>Final spatial processing with reverb</li>
+</ul>
+</div>
 </section>
 
+<!-- MODULES -->
 <section>
-    <h2>🔊 Synthesis Modules</h2>
-    <div class="grid">
+<h2>🔊 Synthesis Modules</h2>
+<div class="grid">
 
-        <div class="card">
-            <h3>Additive Beat Synth</h3>
-            <p>
-                Uses slightly detuned frequencies to create beating effects
-                and rhythmic pulsations.
-            </p>
-        </div>
+<div class="card">
+<h3>Additive Beat Synth</h3>
+<p>
+Uses slightly detuned frequencies to create beating effects, producing rhythmic pulsations and interference patterns.
+</p>
+</div>
 
-        <div class="card">
-            <h3>Variable Spectrum Synth</h3>
-            <p>
-                Dynamically controls partial amplitudes to enable smooth
-                timbral evolution.
-            </p>
-        </div>
+<div class="card">
+<h3>Variable Spectrum Synth</h3>
+<p>
+Controls amplitude of partials dynamically, allowing smooth transitions and evolving timbres.
+</p>
+</div>
 
-        <div class="card">
-            <h3>Masking Algorithm Synth</h3>
-            <p>
-                Applies psychoacoustic masking principles to emphasize
-                or suppress frequencies.
-            </p>
-        </div>
+<div class="card">
+<h3>Masking Algorithm Synth</h3>
+<p>
+Applies psychoacoustic masking to emphasize or suppress certain frequencies, shaping perception of sound.
+</p>
+</div>
 
-    </div>
+</div>
 </section>
 
+<!-- VECTOR -->
 <section>
-    <h2>🎚️ Vector Synthesis</h2>
-    <div class="card">
-        <p>
-            The system blends four modules using vector synthesis, allowing
-            smooth transitions between different sound sources and creating
-            continuously evolving timbres.
-        </p>
-    </div>
+<h2>🎚️ Vector Synthesis</h2>
+<div class="card">
+<p>
+Vector synthesis blends the outputs of multiple sound sources in a continuous control space.  
+In this project, four modules are mixed dynamically, allowing smooth transitions between different timbres.
+</p>
+</div>
 </section>
 
+<!-- RESULTS -->
 <section>
-    <h2>🌊 Effects</h2>
-    <div class="card">
-        <p>
-            Final output is processed using reverb (ABL package), adding
-            spatial depth and atmosphere.
-        </p>
-    </div>
+<h2>🎧 Results</h2>
+<div class="card">
+<ul>
+<li>Functional modular synthesizer</li>
+<li>Real-time sound manipulation</li>
+<li>Wide range of textures and sonic behaviors</li>
+<li>Dynamic timbral transitions</li>
+</ul>
+</div>
 </section>
 
+<!-- DISCUSSION -->
 <section>
-    <h2>🎧 Results</h2>
-    <div class="card">
-        <ul>
-            <li>Functional modular synthesizer</li>
-            <li>Real-time sound manipulation</li>
-            <li>Wide range of textures and timbres</li>
-        </ul>
-    </div>
+<h2>💬 Discussion</h2>
+<div class="card">
+
+<h3>What Worked Well</h3>
+<ul>
+<li>Modular architecture</li>
+<li>Flexibility of additive synthesis</li>
+<li>Vector mixing system</li>
+</ul>
+
+<h3>Limitations</h3>
+<ul>
+<li>User interface could be improved</li>
+<li>No preset system</li>
+<li>Complex parameter interactions</li>
+</ul>
+
+</div>
 </section>
 
+<!-- FUTURE -->
 <section>
-    <h2>💬 Discussion</h2>
-    <div class="card">
-        <strong>What worked well:</strong>
-        <ul>
-            <li>Flexible modular design</li>
-            <li>Expressive additive synthesis</li>
-            <li>Smooth vector mixing</li>
-        </ul>
-
-        <strong>Limitations:</strong>
-        <ul>
-            <li>Interface could be improved</li>
-            <li>No preset system</li>
-            <li>Complex parameter interactions</li>
-        </ul>
-    </div>
+<h2>🚀 Future Work</h2>
+<div class="card">
+<ul>
+<li>Improved UI/UX design</li>
+<li>Preset saving/loading</li>
+<li>MIDI integration</li>
+<li>More synthesis algorithms</li>
+<li>Performance optimization</li>
+</ul>
+</div>
 </section>
 
+<!-- DOCUMENTATION -->
 <section>
-    <h2>🚀 Future Work</h2>
-    <div class="card">
-        <ul>
-            <li>Improved UI/UX</li>
-            <li>Preset saving/loading</li>
-            <li>MIDI integration</li>
-            <li>More synthesis modules</li>
-        </ul>
-    </div>
+<h2>📖 Work Diary & Process</h2>
+<div class="card">
+
+<h3>Development Stages</h3>
+<ul>
+<li>Learning Max/MSP basics</li>
+<li>Understanding additive synthesis</li>
+<li>Building synthesis modules</li>
+<li>Integrating full system</li>
+<li>Debugging and testing</li>
+</ul>
+
+<h3>Challenges</h3>
+<ul>
+<li>Learning a new programming environment</li>
+<li>Debugging signal flow issues</li>
+<li>Managing complexity</li>
+</ul>
+
+</div>
 </section>
 
+<!-- CATEGORIES -->
 <section>
-    <h2>📚 Context</h2>
-    <div class="card">
-        <p>
-            This project was developed based on concepts from
-            <em>Electronic Music and Sound Design</em> by Cipriani & Giri,
-            focusing on additive synthesis and sound design techniques.
-        </p>
-    </div>
+<h2>📊 Project Categories</h2>
+<div class="card">
+<ul>
+<li><strong>Creative Development:</strong> exploration of sound textures</li>
+<li><strong>Software Development:</strong> Max/MSP patch design</li>
+<li><strong>Algorithms:</strong> additive synthesis, masking</li>
+<li><strong>Research:</strong> synthesis techniques and perception</li>
+</ul>
+</div>
 </section>
 
+<!-- REFLECTION -->
 <section>
-    <h2>▶️ Demo</h2>
-    <div class="card">
-        <p>Add your demo video or audio here (YouTube / SoundCloud embed)</p>
-    </div>
+<h2>⚖️ Reflection</h2>
+<div class="card">
+
+<h3>Technical Choices</h3>
+<p>
+Additive synthesis was chosen for its fundamental role in sound design and its flexibility.
+Modular design allows scalability and experimentation.
+</p>
+
+<h3>MVP vs Final</h3>
+<ul>
+<li>MVP: simple additive synth</li>
+<li>Final: 4 modules + vector synthesis + effects</li>
+</ul>
+
+<h3>Learning Outcome</h3>
+<p>
+This project significantly improved my understanding of sound synthesis, DSP concepts, and modular system design.
+</p>
+
+</div>
 </section>
 
+<!-- DEMO -->
 <section>
-    <h2>🔗 Links</h2>
-    <div class="card">
-        <p>
-            GitHub Repository: <a href="#">Add your repo link</a><br>
-            Project Files: <a href="#">Add files link</a>
-        </p>
-    </div>
+<h2>▶️ Demo</h2>
+<div class="card">
+<p>Add your demo video or audio here</p>
+</div>
+</section>
+
+<!-- LINKS -->
+<section>
+<h2>🔗 Links</h2>
+<div class="card">
+<p>
+GitHub Repository: <br>
+Project Files: <br>
+</p>
+</div>
 </section>
 
 <footer>
-    <p>© 2026 Your Name — Modular Synth Project</p>
+<p>© 2026 Your Name — Modular Synth Project</p>
 </footer>
 
 </body>
