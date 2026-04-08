@@ -22,7 +22,6 @@ header {
 
 header h1 {
     font-size: 2.8rem;
-    margin-bottom: 10px;
 }
 
 header p {
@@ -48,7 +47,6 @@ h2 {
     padding: 25px;
     margin: 20px 0;
     border-radius: 12px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.3);
 }
 
 .grid {
@@ -83,7 +81,7 @@ footer {
     <h1>🎛️ Modular Additive Synthesizer</h1>
     <p>
         A Max/MSP project exploring additive synthesis, modular sound design,
-        and real-time audio interaction based on principles from Electronic Music and Sound Design.
+        and real-time audio interaction.
     </p>
 </header>
 
@@ -91,8 +89,8 @@ footer {
 <h2>📌 Overview</h2>
 <div class="card">
 <p>
-This project is a modular synthesizer built in Max/MSP that combines multiple additive synthesis techniques into a flexible and interactive system. 
-Different synthesis modules can be selected and blended in real time using a vector mixing approach, allowing continuous transformation between timbres.
+This project is a modular synthesizer built in Max/MSP that combines multiple additive synthesis techniques into a flexible system. 
+Different synthesis modules can be selected and blended in real time using vector synthesis.
 </p>
 </div>
 </section>
@@ -101,34 +99,27 @@ Different synthesis modules can be selected and blended in real time using a vec
 <h2>📚 Context & Background</h2>
 <div class="card">
 <p>
-This project was developed based on the book <span class="highlight">Electronic Music and Sound Design</span> by Alessandro Cipriani and Maurizio Giri. 
-The book introduces digital sound synthesis through both theoretical explanations and practical implementation in Max/MSP.
+This project is based on <span class="highlight">Electronic Music and Sound Design</span> by Alessandro Cipriani and Maurizio Giri.
 </p>
-
 <p>
-At the beginning of this project, I had little experience with sound synthesis or Max/MSP. 
-All techniques implemented here were learned progressively and applied through experimentation and iteration.
+The book introduces digital sound synthesis through both theory and practical implementation in Max/MSP.
+All techniques in this project were learned and applied progressively from this resource.
 </p>
 </div>
 </section>
 
 <section>
-<h2>🧠 Additive Synthesis & Sound Design Principles</h2>
+<h2>🧠 Additive Synthesis</h2>
 <div class="card">
 <p>
-Additive synthesis is a fundamental technique in sound design where complex sounds are created by combining simple sine waves, known as partials.
+Additive synthesis creates complex sounds by combining simple sine waves (partials).
+Each partial contributes to the overall timbre through its frequency and amplitude.
 </p>
-
 <ul>
-<li>Each partial has its own frequency and amplitude</li>
-<li>The combination defines the overall timbre</li>
-<li>Parameters can change over time to create dynamic sound</li>
+<li>Precise control of sound spectrum</li>
+<li>Flexible and fundamental synthesis method</li>
+<li>Based on Fourier principles</li>
 </ul>
-
-<p>
-This approach is based on the principle that any periodic waveform can be represented as a sum of sinusoids. 
-It provides precise control over the spectral structure of sound, making it a powerful tool for sound design and experimentation.
-</p>
 </div>
 </section>
 
@@ -138,10 +129,6 @@ It provides precise control over the spectral structure of sound, making it a po
 <pre>
 [4 Synth Modules] → [Selector + Vector Mixer] → [Reverb] → Output
 </pre>
-
-<p>
-The system consists of four independent synthesis modules. Each module can be assigned a different synthesis method, and their outputs are blended using vector synthesis. The final sound is processed with reverb to add spatial depth.
-</p>
 </div>
 </section>
 
@@ -153,33 +140,30 @@ The system consists of four independent synthesis modules. Each module can be as
 <h3>Additive Beat Synth</h3>
 <p>
 In additive synthesis, beating occurs when two sine waves with slightly different frequencies are combined. 
-The interaction between these frequencies produces a periodic fluctuation in amplitude, perceived as a pulsing effect.
+This interaction produces a periodic fluctuation in amplitude, perceived as a pulsing effect.
 </p>
 <p>
-The speed of this pulsation is determined by the difference between the frequencies. For example, combining 440 Hz and 439 Hz produces a 1 Hz beat, resulting in a slow rise and fall in volume.
-This technique is used to create rhythmic motion and subtle dynamic variation in sound.
+The speed of the pulsation depends on the frequency difference. For example, 440 Hz and 439 Hz create a 1 Hz beat.
 </p>
 </div>
 
 <div class="card">
 <h3>Variable Spectrum Synth</h3>
 <p>
-Variable spectrum additive synthesis generates complex timbres by combining multiple sine waves, each with independently controlled frequency and amplitude.
+This method builds complex sounds by combining multiple sine waves with independently controlled frequencies and amplitudes.
 </p>
 <p>
-Based on the principle that any periodic sound can be represented as a sum of sinusoids, this method allows precise shaping of the spectral content.
-By dynamically adjusting these parameters over time, it enables the creation of rich, evolving sounds.
+It allows precise shaping of timbre and enables evolving sound textures over time.
 </p>
 </div>
 
 <div class="card">
 <h3>Masking Algorithm Synth</h3>
 <p>
-The masking method defines a spectral range using two envelope curves that represent the lowest and highest frequencies of the sound.
+This method defines a spectral range using two envelopes representing the lowest and highest frequencies.
 </p>
 <p>
-The space between these boundaries is divided into equal segments, where additional components are distributed.
-This creates a structured “mask” that controls how partials are arranged, shaping the overall spectrum and influencing how the sound is perceived.
+The space between them is divided evenly, creating a structured distribution of partials that shapes perception of sound.
 </p>
 </div>
 
@@ -190,17 +174,19 @@ This creates a structured “mask” that controls how partials are arranged, sh
 <h2>🎚️ Vector Synthesis</h2>
 <div class="card">
 <p>
-Vector synthesis is used to blend the outputs of the four modules in a continuous control space. 
-This allows smooth transitions between different synthesis techniques and enables dynamic exploration of timbre.
+Vector synthesis enables dynamic blending of four sound sources using a 2D control space.
+</p>
+<p>
+By moving a control point, the system smoothly crossfades between sources, allowing evolving and expressive sound transformations.
 </p>
 </div>
 </section>
 
 <section>
-<h2>🌊 Effects Processing</h2>
+<h2>🌊 Effects</h2>
 <div class="card">
 <p>
-The final output is processed using reverb from the ABL package, adding spatial depth and enhancing the overall sonic character.
+Reverb from the ABL package is applied to add spatial depth and atmosphere.
 </p>
 </div>
 </section>
@@ -210,43 +196,8 @@ The final output is processed using reverb from the ABL package, adding spatial 
 <div class="card">
 <ul>
 <li>Functional modular synthesizer</li>
-<li>Real-time interaction and control</li>
+<li>Real-time control</li>
 <li>Wide range of sound textures</li>
-<li>Dynamic and evolving timbres</li>
-</ul>
-</div>
-</section>
-
-<section>
-<h2>💬 Discussion</h2>
-<div class="card">
-
-<h3>What Worked Well</h3>
-<ul>
-<li>Modular architecture allowed flexibility and scalability</li>
-<li>Additive synthesis enabled detailed control over sound</li>
-<li>Vector mixing created smooth timbral transitions</li>
-</ul>
-
-<h3>Limitations</h3>
-<ul>
-<li>User interface could be more intuitive</li>
-<li>No preset system implemented</li>
-<li>Complex parameter interactions can be difficult to manage</li>
-</ul>
-
-</div>
-</section>
-
-<section>
-<h2>🚀 Future Work</h2>
-<div class="card">
-<ul>
-<li>Improve interface design</li>
-<li>Add preset system</li>
-<li>Integrate MIDI control</li>
-<li>Expand synthesis methods</li>
-<li>Optimize performance</li>
 </ul>
 </div>
 </section>
@@ -255,65 +206,78 @@ The final output is processed using reverb from the ABL package, adding spatial 
 <h2>📖 Work Diary & Development Process</h2>
 <div class="card">
 
-<h3>Development Stages</h3>
+<h3>Initial Phase: Learning</h3>
+<p>
+At the beginning of the project, I had little to no experience with Max/MSP or sound synthesis. 
+The first stage focused on understanding basic concepts such as signal flow, oscillators, and simple additive synthesis.
+</p>
+
+<h3>Exploration Phase</h3>
+<p>
+After gaining basic knowledge, I experimented with combining multiple sine waves and manipulating their frequencies and amplitudes.
+During this stage, I explored how small changes affect timbre and perception.
+</p>
+
+<h3>Module Development</h3>
+<p>
+I then began building individual synthesis modules:
+</p>
 <ul>
-<li>Learning basics of Max/MSP</li>
-<li>Understanding additive synthesis concepts</li>
-<li>Implementing individual modules</li>
-<li>Integrating full system</li>
-<li>Testing and debugging</li>
+<li>Beat synthesis for rhythmic pulsation</li>
+<li>Variable spectrum synthesis for timbral control</li>
+<li>Masking algorithm for structured spectral shaping</li>
 </ul>
 
-<h3>Challenges</h3>
+<p>
+Each module required testing and iteration to ensure it behaved as expected.
+</p>
+
+<h3>System Integration</h3>
+<p>
+The next step was combining all modules into a single system. 
+This involved designing a routing structure and implementing vector synthesis to blend the outputs.
+</p>
+
+<h3>Challenges & Failures</h3>
 <ul>
-<li>Learning a completely new environment</li>
-<li>Debugging signal flow</li>
-<li>Managing system complexity</li>
+<li>Incorrect signal routing leading to no sound output</li>
+<li>Unstable parameter interactions</li>
+<li>Difficulty managing multiple modules simultaneously</li>
 </ul>
 
-</div>
-</section>
+<p>
+These issues required debugging, restructuring patches, and simplifying certain parts of the system.
+</p>
 
-<section>
-<h2>📊 Project Categories</h2>
-<div class="card">
+<h3>Refinement</h3>
+<p>
+In the final stage, I focused on improving usability and stability, testing different parameter ranges, and refining the sound output.
+</p>
+
+<h3>Key Learning Outcomes</h3>
 <ul>
-<li><strong>Creative Development:</strong> exploration of sound textures</li>
-<li><strong>Software Development:</strong> Max/MSP programming</li>
-<li><strong>Algorithms:</strong> additive synthesis, masking</li>
-<li><strong>Research:</strong> synthesis techniques and perception</li>
+<li>Understanding of additive synthesis and DSP concepts</li>
+<li>Experience with modular system design</li>
+<li>Improved problem-solving and debugging skills</li>
 </ul>
+
 </div>
 </section>
 
 <section>
 <h2>⚖️ Reflection</h2>
 <div class="card">
-
-<h3>Technical Choices</h3>
 <p>
-Additive synthesis was chosen because it provides a fundamental understanding of sound construction and offers precise control over timbre.
-The modular approach allows flexibility and experimentation.
+The project exceeded the initial MVP by evolving into a multi-module system with vector synthesis.
+The biggest challenge was translating theoretical knowledge into a working system.
 </p>
-
-<h3>MVP vs Final Outcome</h3>
-<ul>
-<li>MVP: simple additive synthesizer</li>
-<li>Final: multi-module system with vector synthesis and effects</li>
-</ul>
-
-<h3>Learning Outcome</h3>
-<p>
-This project significantly improved my understanding of sound synthesis, DSP concepts, and modular system design.
-</p>
-
 </div>
 </section>
 
 <section>
 <h2>▶️ Demo</h2>
 <div class="card">
-<p>Add your demo video or audio here</p>
+<p>Add your demo here</p>
 </div>
 </section>
 
@@ -321,14 +285,14 @@ This project significantly improved my understanding of sound synthesis, DSP con
 <h2>🔗 Links</h2>
 <div class="card">
 <p>
-GitHub Repository: <br>
-Project Files: <br>
+GitHub Repo: <br>
+Project Files:
 </p>
 </div>
 </section>
 
 <footer>
-<p>© 2026 Your Name — Modular Synth Project</p>
+<p>© 2026 Your Name</p>
 </footer>
 
 </body>
